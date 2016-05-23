@@ -1,11 +1,12 @@
 import React from 'react';
 import { render } from 'react-dom';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import reducer from './reducers/ExampleReducer.jsx';
 import { TodoList } from './containers/ExampleContainer.jsx';
 
-const store = createStore(reducer);
+const store = createStore(reducer, applyMiddleware(thunk));
 
 main();
 function main() {
@@ -16,4 +17,5 @@ function main() {
         <TodoList />
       </Provider>
     , app);
+
 }
