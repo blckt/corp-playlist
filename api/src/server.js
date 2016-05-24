@@ -1,11 +1,16 @@
-var koa = require('koa');
-var app = koa();
-var models = require('./models/index.js');
+global.libsPath = __dirname + '/libs/';
 
+const koa = require('koa');
+const app = koa();
+const models = require('./models/index.js');
 
-app.use(function *(){
+// === Mount Routes ===
+require(libsPath + 'route-mounter.js')(app);
+
+app.use(function *(next){
   this.body = 'Hello World';
   console.log('Wololo');
+  yield next;
 });
 
 
