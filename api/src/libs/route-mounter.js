@@ -14,7 +14,7 @@ module.exports = co.wrap(function * (app) {
     // Removes 'api/src'
     const filePath = routePath.slice(7, routePath.length)
 
-    // Removes 'api/src/routes' prefix and '.jsx' suffix
+    // Removes 'api/src/routes' prefix and '.js' suffix
     const mountPath = routePath.slice(14, routePath.length - 3)
 
     try {
