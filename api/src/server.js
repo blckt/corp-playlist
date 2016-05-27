@@ -19,5 +19,4 @@ app.use(function *(next){
   yield next;
 });
 
-
 app.listen(3000);

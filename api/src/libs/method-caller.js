@@ -1,11 +1,11 @@
 'use strict'
 
-const co = require('co')
+global.call = {}
+
 const globby = require('globby')
 
 module.exports = function () {
   let methodPaths = globby.sync(['api/src/methods/**/*.js'])
-  let caller = {}
 
   methodPaths.forEach((methodPath) => {
     // ['api', 'src', 'methods', 'folderName', 'fileName']
@@ -21,9 +21,15 @@ module.exports = function () {
 
     // constructs tokens and populates caller dictionary
     Object.keys(methods).forEach((key) => {
-      const token = key + "-" + fileNameNoExt + "-" + folderName
-      caller[token] = methods[key]
+      console.log(call, fileName, folderName, key)
+      // initializes objects if not already existing
+      if (typeof(call[folderName]) === 'undefined'){
+        call[folderName] = {}
+      }
+      if (typeof(call[folderName][fileNameNoExt]) === 'undefined') {
+        call[folderName][fileNameNoExt] = {}
+      }
+      call[folderName][fileNameNoExt][key] = methods[key]
     })
   })
-  return caller
 }
