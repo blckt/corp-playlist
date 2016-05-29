@@ -1,9 +1,12 @@
 global.libsPath = __dirname + '/libs/';
 
+global.db = require('./models/index.js');
+require(libsPath + 'method-caller.js')()
+
 const koa = require('koa');
 const app = koa();
-const db = require('./models/index.js');
 const bodyParser = require('koa-bodyparser');
+const cors = require('kcors');
 
 /* === Mount Routes === */
 require(libsPath + 'route-mounter.js')(app);
@@ -12,11 +15,6 @@ require(libsPath + 'route-mounter.js')(app);
 db.sequelize.sync()
 
 app.use(bodyParser());
-
-app.use(function *(next){
-  this.body = 'Hello World';
-  console.log('Wololo');
-  yield next;
-});
+app.use(cors());
 
 app.listen(3000);

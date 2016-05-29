@@ -21,7 +21,6 @@ module.exports = function () {
 
     // constructs tokens and populates caller dictionary
     Object.keys(methods).forEach((key) => {
-      console.log(call, fileName, folderName, key)
       // initializes objects if not already existing
       if (typeof(call[folderName]) === 'undefined'){
         call[folderName] = {}
