@@ -43,6 +43,7 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.5.0",
     "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
     "chai-immutable": "^1.5.4",
     "eslint": "^3.5.0",
     "eslint-config-airbnb": "^10.0.0",
@@ -65,6 +66,7 @@
     "redux-devtools-log-monitor": "^1.0.11",
     "redux-router": "^2.1.2",
     "source-map-loader": "^0.1.5",
+    "supertest": "^2.0.0",
     "ts-loader": "^0.8.2",
     "typescript": "^1.8.10",
     "webpack-dev-server": "^1.14.1"
@@ -72,6 +74,7 @@
   "scripts": {
     "test": "./node_modules/mocha/bin/mocha --compilers js:babel/register --recursive",
     "test:watch": "npm run test -- --watch",
+    "test:server": "mocha api/test --timeout 10000",
     "webserver": "node api/src/server.js",
     "build": "node_modules/.bin/webpack",
     "dev": "node_modules/.bin/webpack-dev-server --port 1337"
